@@ -36,7 +36,11 @@ public class TransmitManager {
     // a ram buffer for public key export (no need to allocate flash !)
     // memory buffer size is determined by copyRecordsToRamBuf=min 512
     private static final short RAM_BUF_SIZE = (short) 530;
-    private static final short FLASH_BUF_SIZE = (short) 1220;
+    // This is the primary limitation on the size of imported keys.
+    // 2372 is enough for RSA/4096 but might be larger than needed. (2364 was not enough)
+    // 1220 is enough for RSA/2048.
+    // private static final short FLASH_BUF_SIZE = (short) 1220;
+    private static final short FLASH_BUF_SIZE = (short) 2372;
     private byte[] ram_buf = null;
     // internal variables to do chaining
     private short[] chaining_cache = null;
