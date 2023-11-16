@@ -642,8 +642,10 @@ public class GidsApplet extends Applet {
         }
 
         // Finally, update the security environment.
+        JCSystem.beginTransaction();
         currentAlgorithmRef[0] = algRef;
         currentKey[0] = crt;
+        JCSystem.commitTransaction();
 
     }
 
